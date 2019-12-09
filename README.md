@@ -1,5 +1,5 @@
 # lince-dynamic-resource-java
-Microservice que abstrai a persistencia de dados tipo chave-valor. 
+Microservice responsavel pela 
 Permite o cadastro de dados de cache e banco de dados.
 
 Solução
