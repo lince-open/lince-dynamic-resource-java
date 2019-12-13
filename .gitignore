@@ -1,0 +1,12 @@
+/target/
+.classpath
+.resource
+.settings
+
+.idea
+.idea/
+/.idea/
+*.iml
+
+RFA_RSSL0*
+**/.DS_Store
