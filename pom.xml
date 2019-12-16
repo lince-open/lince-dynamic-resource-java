@@ -21,7 +21,7 @@
         <sonar.projectKey>lince-open_lince-kvs-java</sonar.projectKey>
         <sonar.organization>lince-open</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.login>${{SONAR_TOKEN}}</sonar.login>
+        <sonar.login>942740672982c776faa5170c7788e0951c7a6d40</sonar.login>
     </properties>
 
     <dependencies>
