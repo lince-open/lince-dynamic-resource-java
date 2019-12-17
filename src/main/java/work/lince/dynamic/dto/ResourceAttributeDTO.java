@@ -13,17 +13,15 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class ResourceAttributeDTO {
 
-    @NotNull
     private String id;
 
-    @NotNull
     private String name;
 
     private String description;
 
-    @NotNull
     private AttributeType type;
 
+    @NotNull
     private Long definitionId;
 
     private Boolean required;

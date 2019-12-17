@@ -54,7 +54,7 @@ public class ResourceDefinitionController {
         return toDto(service.createOrUpdate(fromDto(body)));
     }
 
-    @PostMapping("/{resourceId}/attributes/{attributeId}")
+    @PutMapping("/{resourceId}/attributes/{attributeId}")
     @ResponseStatus(HttpStatus.OK)
     public ResourceAttributeDTO saveOrUpdate(@PathVariable("resourceId") final String resourceId,
                                              @PathVariable("attributeId") final String attributeId,
