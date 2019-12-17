@@ -39,7 +39,12 @@ public class ResourceDefinitionController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<ResourceDTO> findAll() {
-        return toDto(service.findAll());
+        List<ResourceDefinition> resourceDefinitionList = service.findAll();
+        if (CollectionUtils.isEmpty(resourceDefinitionList)) {
+            return Collections.EMPTY_LIST;
+        }
+        return resourceDefinitionList.stream().map(this::toDto).collect(Collectors.toList());
+
     }
 
     @PutMapping(path = "/{id}")
@@ -61,7 +66,11 @@ public class ResourceDefinitionController {
     @GetMapping("/{resourceId}/attributes")
     @ResponseStatus(HttpStatus.OK)
     public List<ResourceAttributeDTO> getAttributes(@PathVariable("resourceId") final String resourceId) {
-        return attributesToDto(service.findByExternalCode(resourceId).getAttributes());
+        ResourceDefinition resourceDefinition = service.findByExternalCode(resourceId);
+        if (CollectionUtils.isEmpty(resourceDefinition.getAttributes())) {
+            return Collections.EMPTY_LIST;
+        }
+        return resourceDefinition.getAttributes().stream().map(this::toDto).collect(Collectors.toList());
     }
 
     protected ResourceAttributeDTO toDto(ResourceAttributeDefinition definition) {
@@ -78,13 +87,6 @@ public class ResourceDefinitionController {
         return builder.build();
     }
 
-    protected List<ResourceAttributeDTO> attributesToDto(List<ResourceAttributeDefinition> list) {
-        if (CollectionUtils.isEmpty(list)) {
-            return Collections.EMPTY_LIST;
-        }
-        return list.stream().map(this::toDto).collect(Collectors.toList());
-    }
-
     protected ResourceAttributeDefinition fromDto(ResourceAttributeDTO dto) {
         ResourceAttributeDefinition.ResourceAttributeDefinitionBuilder builder = ResourceAttributeDefinition.builder();
         builder.externalCode(dto.getId())
@@ -97,20 +99,25 @@ public class ResourceDefinitionController {
     }
 
     protected ResourceDTO toDto(ResourceDefinition resourceDefinition) {
-        return ResourceDTO.builder()
-                .build();
-    }
-
-    protected List<ResourceDTO> toDto(List<ResourceDefinition> list) {
-        if (CollectionUtils.isEmpty(list)) {
-            return Collections.EMPTY_LIST;
+        ResourceDTO.ResourceDTOBuilder builder = ResourceDTO.builder();
+        builder.id(resourceDefinition.getExternalCode())
+                .name(resourceDefinition.getName())
+                .description(resourceDefinition.getDescription());
+        if (!CollectionUtils.isEmpty(resourceDefinition.getAttributes())) {
+            builder.attributes(resourceDefinition.getAttributes().stream().map(this::toDto).collect(Collectors.toList()));
         }
-        return list.stream().map(this::toDto).collect(Collectors.toList());
+        return builder.build();
     }
 
     protected ResourceDefinition fromDto(ResourceDTO dto) {
-        return ResourceDefinition.builder()
-                .build();
+        ResourceDefinition.ResourceDefinitionBuilder builder = ResourceDefinition.builder();
+        builder.externalCode(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription());
+        if (!CollectionUtils.isEmpty(dto.getAttributes())) {
+            builder.attributes(dto.getAttributes().stream().map(this::fromDto).collect(Collectors.toList()));
+        }
+        return builder.build();
     }
 
 }

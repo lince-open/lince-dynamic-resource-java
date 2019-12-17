@@ -23,7 +23,7 @@ public class ResourceDefinitionService {
     protected ResourceAttributeDefinitionRepository resourceAttributeDefinitionRepository;
 
     public ResourceDefinition createOrUpdate(ResourceDefinition definition) {
-        Optional<ResourceDefinition> resourceDefinition = repository.findById(definition.getId());
+        Optional<ResourceDefinition> resourceDefinition = repository.findByExternalCode(definition.getExternalCode());
         return resourceDefinition.isPresent() ? this.update(resourceDefinition.get(), definition) : this.create(definition);
     }
 

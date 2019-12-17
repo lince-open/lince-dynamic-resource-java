@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -12,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class ResourceDTO {
 
-    @NotNull
     private String id;
 
     @NotNull
