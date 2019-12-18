@@ -4,17 +4,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import work.lince.commons.exception.NotFoundException;
-import work.lince.dynamic.model.ResourceAttributeDefinition;
-import work.lince.dynamic.model.ResourceDefinition;
-import work.lince.dynamic.repository.ResourceAttributeDefinitionRepository;
-import work.lince.dynamic.repository.ResourceDefinitionRepository;
+import work.lince.dictionary.model.ResourceAttributeDefinition;
+import work.lince.dictionary.model.ResourceDefinition;
+import work.lince.dictionary.repository.ResourceAttributeDefinitionRepository;
+import work.lince.dictionary.repository.ResourceDefinitionRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @Service
-public class ResourceDefinitionService {
+public class ResourceService {
 
     @Autowired
     protected ResourceDefinitionRepository repository;
