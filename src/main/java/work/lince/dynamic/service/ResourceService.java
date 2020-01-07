@@ -4,13 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import work.lince.commons.exception.NotFoundException;
-import work.lince.dictionary.model.ResourceAttributeDefinition;
-import work.lince.dictionary.model.ResourceDefinition;
-import work.lince.dictionary.repository.ResourceAttributeDefinitionRepository;
-import work.lince.dictionary.repository.ResourceDefinitionRepository;
-
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
