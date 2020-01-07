@@ -1,4 +1,4 @@
-package work.lince.dynamic
+package work.lince.dictionary
 
 import groovyx.net.http.ContentType
 import groovyx.net.http.RESTClient
